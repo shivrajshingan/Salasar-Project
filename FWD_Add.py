@@ -11,8 +11,8 @@ import time
 
 # Config
 URL = "https://admin2.salasarauction.com/admin/"
-ADMIN_USERNAME = "salasar_admin"
-ADMIN_PASSWORD = "Aonesalasar@AOSPL"
+ADMIN_USERNAME = "Demo"
+ADMIN_PASSWORD = "Demo"
 BACKDATED_AUCTION_ID = "7713"
 TODAY = "2025-07-23"
 
@@ -21,7 +21,7 @@ wait = WebDriverWait(driver, 10)
 actions = ActionChains(driver)
 
 def print_status(step, result):
-    print(f"{step}: {'✅ PASS' if result else '❌ FAIL'}")
+    print(f"{step}: {'PASS' if result else 'FAIL'}")
 
 try:
     driver.get(URL)
@@ -75,7 +75,7 @@ try:
             print(f"Iframe {idx}: id={frame.get_attribute('id')}, name={frame.get_attribute('name')}")
         if iframes:
             driver.switch_to.frame(iframes[0])
-            print("🔄 Switched to first iframe.")
+            print("Switched to first iframe.")
 
     except Exception as e:
         print_status("Add Button Click", False)
@@ -109,7 +109,7 @@ try:
         try:
             driver.find_element(By.ID, "auction_date").send_keys(TODAY)
         except NoSuchElementException:
-            print("⚠️ 'auction_date' not found. Skipping.")
+            print("'auction_date' not found. Skipping.")
 
         driver.find_element(By.NAME, "bshh").send_keys("09")
         driver.find_element(By.NAME, "bsmm").send_keys("30")

@@ -11,14 +11,14 @@ import pyperclip
 
 # Config
 URL = "http://local.salasarauction.com/admin/"
-USERNAME = "salasar_admin"
-PASSWORD = "Aonesalasar@AOSPL"
+USERNAME = "Demo"
+PASSWORD = "Demo"
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 wait = WebDriverWait(driver, 10)
 
 def print_status(step, result):
-    print(f"{step}: {'✅ PASS' if result else '❌ FAIL'}")
+    print(f"{step}: {'PASS' if result else 'FAIL'}")
 
 try:
     # Step 1: Open admin login page
@@ -69,7 +69,7 @@ try:
 
         time.sleep(3)
         # driver.save_screenshot("after_add_click.png")
-        # print("📸 Screenshot saved: after_add_click.png")
+        # print("Screenshot saved: after_add_click.png")
 
         # Detect and switch to iframe if exists
         iframes = driver.find_elements(By.TAG_NAME, "iframe")
@@ -78,7 +78,7 @@ try:
             print(f"Iframe {idx}: id={frame.get_attribute('id')}, name={frame.get_attribute('name')}")
         if len(iframes) > 0:
             driver.switch_to.frame(iframes[0])
-            print("🔄 Switched to first iframe.")
+            print("Switched to first iframe.")
 
     except (TimeoutException, NoSuchElementException) as e:
         print_status("Add Button Click", False)
@@ -119,7 +119,7 @@ try:
         try:
             driver.find_element(By.ID, "auction_date").send_keys("2025-06-20")
         except NoSuchElementException:
-            print("⚠️ End date field with ID 'id4' not found. Skipping.")
+            print("End date field with ID 'id4' not found. Skipping.")
             # driver.save_screenshot("missing_end_date_field.png")
 
         driver.find_element(By.NAME, "bshh").send_keys("11")
@@ -127,7 +127,7 @@ try:
         driver.find_element(By.NAME, "bsss").send_keys("00")
         Select(driver.find_element(By.ID, "auccomp")).select_by_visible_text("Jindal Polyfilms Ltd (Unit: Nasik, Maharashtra) (AA0520A01)")
 
-        # 👇 Updated location autocomplete logic
+        # Updated location autocomplete logic
         # try:
         #     location_input = wait.until(EC.element_to_be_clickable((By.NAME, "autocomplete")))
         #     driver.execute_script("arguments[0].scrollIntoView(true);", location_input)
@@ -138,7 +138,7 @@ try:
         # except Exception as e:
         #     print_status("Location Field Entry", False)
         #     driver.save_screenshot("location_field_issue.png")
-        #     print("⚠️ Location input not interactable. Screenshot saved.")
+        #     print("Location input not interactable. Screenshot saved.")
 
         driver.find_element(By.NAME, "behh").send_keys("18")
         driver.find_element(By.NAME, "bemm").send_keys("50")

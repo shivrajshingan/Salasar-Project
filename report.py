@@ -11,15 +11,15 @@ import time
 
 # Config
 URL = "https://admin2.salasarauction.com/admin/"
-USERNAME = "salasar_admin"
-PASSWORD = "Aonesalasar@AOSPL"
+USERNAME = "Demo"
+PASSWORD = "Demo"
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 wait = WebDriverWait(driver, 10)
 actions = ActionChains(driver)
 
 def print_status(step, result):
-    print(f"{step}: {'✅ PASS' if result else ' FAIL'}")
+    print(f"{step}: {'PASS' if result else ' FAIL'}")
 
 try:
     # Open admin login page
@@ -87,7 +87,7 @@ try:
         print_status("Fetch result", False)
         print(" Exception:", str(e))
         driver.save_screenshot("auction_result.png")
-        print("📸 Screenshot saved: auction_result.png")
+        print("Screenshot saved: auction_result.png")
 
 finally:
     time.sleep(10)
